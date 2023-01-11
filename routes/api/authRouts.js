@@ -1,7 +1,7 @@
 const express = require("express");
 
 const { authControllers: cntr } = require("../../controllers");
-const { validation } = require("../../middlewars");
+const { validation, auth } = require("../../middlewars");
 const { cntrlWrap } = require("../../helpers");
 const { joiRegisterSchema, joiLoginSchema } = require("../../models/user");
 
@@ -14,5 +14,7 @@ authRouter.post(
 );
 
 authRouter.post("/login", validation(joiLoginSchema), cntrlWrap(cntr.login));
+
+authRouter.post("/logout", auth, cntrlWrap(cntr.logout));
 
 module.exports = authRouter;
