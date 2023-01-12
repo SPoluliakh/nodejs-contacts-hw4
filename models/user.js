@@ -42,6 +42,7 @@ userDbSchema.methods.verifyPassword = function (password) {
 };
 
 userDbSchema.post("save", handleDbSchemaError);
+userDbSchema.post("findOneAndUpdate", handleDbSchemaError);
 
 const User = model("user", userDbSchema);
 

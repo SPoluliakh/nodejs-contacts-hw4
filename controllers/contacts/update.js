@@ -5,6 +5,7 @@ const update = async (req, res) => {
   const { id } = req.params;
   const contactToUpdate = await Contact.findByIdAndUpdate(id, body, {
     new: true,
+    runValidators: true,
   });
   if (!contactToUpdate) {
     const error = new Error(`contact whith id = ${id} not found`);

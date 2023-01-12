@@ -4,7 +4,7 @@ const updateFavorite = async (req, res) => {
   const { body } = req;
   const { id } = req.params;
   const contactToUpdate = await Contact.findByIdAndUpdate(id, body, {
-    new: true,
+    new: true, runValidators: true
   });
   if (!contactToUpdate) {
     const error = new Error(`contact whith id = ${id} not found`);
